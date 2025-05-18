@@ -1,10 +1,11 @@
-import { Button } from "@/components/ui";
+import { Routes } from "@/routes/routes";
+import { BrowserRouter } from "react-router";
 
 function App() {
   return (
-    <div className="flex items-center justify-center">
-      <Button>Button</Button>
-    </div>
+    <BrowserRouter>
+      <Routes />
+    </BrowserRouter>
   );
 }
 
