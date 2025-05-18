@@ -6,22 +6,26 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-
-const items = [
-  {
-    title: "Dashboard",
-    url: "/",
-    icon: LayoutDashboard,
-    isActive: true,
-  },
-  {
-    title: "Novo usuário",
-    url: "#",
-    icon: UserPlus,
-  },
-];
+import { Link, useLocation } from "react-router";
 
 export function NavMain() {
+  const { pathname } = useLocation();
+
+  const items = [
+    {
+      title: "Dashboard",
+      url: "/",
+      icon: LayoutDashboard,
+      isActive: pathname === "/",
+    },
+    {
+      title: "Cadastrar Usuário",
+      url: "/new-user",
+      icon: UserPlus,
+      isActive: pathname === "/new-user",
+    },
+  ];
+
   return (
     <SidebarMenu className="p-2">
       {items.map((item) => (
@@ -35,10 +39,10 @@ export function NavMain() {
               "p-3 h-9"
             )}
           >
-            <a href={item.url}>
+            <Link to={item.url}>
               <item.icon />
               <span>{item.title}</span>
-            </a>
+            </Link>
           </SidebarMenuButton>
         </SidebarMenuItem>
       ))}

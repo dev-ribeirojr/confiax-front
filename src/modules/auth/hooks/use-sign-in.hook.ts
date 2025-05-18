@@ -15,6 +15,10 @@ import { useUserStore } from "@/stores";
 export function useSignIn() {
   const form = useForm<SignInDto>({
     resolver: zodResolver(signInSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
   });
 
   const [isLoading, setIsLoading] = useState(false);
