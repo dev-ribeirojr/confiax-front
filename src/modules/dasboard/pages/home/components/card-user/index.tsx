@@ -8,13 +8,22 @@ import {
 
 import { FaEllipsisV } from "react-icons/fa";
 
-export function CardUser() {
+import { format } from "date-fns";
+
+interface CardUserProps {
+  item: UserModel;
+}
+
+export function CardUser({ item }: CardUserProps) {
   return (
     <Card className="p-4 relative">
       <div className="flex justify-between items-center w-full gap-4">
         <div className="flex gap-2 pr-10">
-          <Badge variant="outline">Administrador</Badge>
-          <Badge variant="outline">Convidado</Badge>
+          {item.roles.map((role) => (
+            <Badge variant="outline-success" key={role.id}>
+              {role.role}
+            </Badge>
+          ))}
         </div>
 
         <Button
@@ -25,16 +34,20 @@ export function CardUser() {
         </Button>
       </div>
 
-      <CardUserDetails email={"email@email.com"} name={"pablo alves ribeiro"} />
+      <CardUserDetails email={item.email} name={item.name} />
 
       <div className="flex gap-2 justify-between">
         <div>
           <CardDescription>Criado em: </CardDescription>
-          <CardDescription className="text-[12px]">10/02/2024</CardDescription>
+          <CardDescription className="text-[12px]">
+            {format(item.createdAt, "dd-MM-yyyy")}
+          </CardDescription>
         </div>
         <div>
           <CardDescription>Atualizado em</CardDescription>
-          <CardDescription className="text-[12px]">10/02/2024</CardDescription>
+          <CardDescription className="text-[12px]">
+            {format(item.updatedAt, "dd-MM-yyyy")}
+          </CardDescription>
         </div>
       </div>
     </Card>
