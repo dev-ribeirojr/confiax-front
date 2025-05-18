@@ -1,19 +1,31 @@
 import { useState } from "react";
+import { AxiosError } from "axios";
+import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { signInSchema, type SignInDto } from "@/modules/auth/schemas";
 import { signIn } from "@/services/models/auth";
-import toast from "react-hot-toast";
 import { setCookies } from "@/lib";
-import { AxiosError } from "axios";
+import { getMe } from "@/services/models/user";
+import { useUserStore } from "@/stores";
 
 export function useSignIn() {
   const form = useForm<SignInDto>({
     resolver: zodResolver(signInSchema),
+    defaultValues: {
+      email: "pablo@email.com",
+      password: "123456",
+    },
   });
 
   const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();
+
+  const { updateUser } = useUserStore();
 
   async function onSubmit(params: SignInDto) {
     setIsLoading(true);
@@ -21,6 +33,14 @@ export function useSignIn() {
       const response = await signIn(params);
 
       setCookies("auth", response.access_token);
+
+      const responseMe = await getMe();
+
+      console.log("USER DATA", responseMe);
+
+      updateUser(responseMe);
+
+      navigate("/");
     } catch (error) {
       let description: string;
       const _error = error as AxiosError<ResponseError>;

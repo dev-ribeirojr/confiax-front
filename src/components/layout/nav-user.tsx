@@ -13,11 +13,14 @@ import {
   useSidebar,
 } from "@/components/ui";
 import { useUserStore } from "@/stores";
+import { useSignOut } from "@/modules/auth/hooks";
 
 export function NavUser() {
   const { isMobile } = useSidebar();
 
   const { user } = useUserStore();
+
+  const { signOut } = useSignOut();
 
   if (!user) return null;
 
@@ -43,7 +46,7 @@ export function NavUser() {
             <CardUserDetails email={user.email} name={user.name} />
 
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem onClick={signOut}>
               <LogOut />
               Sair da conta
             </DropdownMenuItem>
