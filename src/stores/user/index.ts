@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { UseUserStoreProps } from "@/stores/user.store.ts/interfaces";
+import type { UseUserStoreProps } from "@/stores/user/interfaces";
 
 export const useUserStore = create<UseUserStoreProps>((set) => ({
   user: null,
