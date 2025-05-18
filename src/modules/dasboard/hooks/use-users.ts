@@ -1,14 +1,15 @@
 import { getUsers } from "@/services/models/user";
+import { useUsersStore } from "@/stores";
 import { useEffect, useRef, useState } from "react";
 
 export function useUsers() {
+  const { updateUsers, updateNextPage, users } = useUsersStore();
+
   const [isLoading, setIsLoading] = useState(false);
 
   const [isError, setIsError] = useState(false);
 
   const [isLoadingNextPage, setIsLoadingNextPage] = useState(false);
-
-  const [data, setData] = useState<UserModel[]>([]);
 
   const currentPage = useRef(1);
 
@@ -24,7 +25,7 @@ export function useUsers() {
     try {
       const response = await getUsers(currentPage.current, limit);
 
-      setData(response.data);
+      updateUsers(response.data);
 
       hasNextPage.current = response.last_page > currentPage.current;
     } catch (error) {
@@ -42,7 +43,7 @@ export function useUsers() {
     try {
       const response = await getUsers(currentPage.current + 1, limit);
 
-      setData((prev) => [...prev, ...response.data]);
+      updateNextPage(response.data);
 
       currentPage.current = response.page;
 
@@ -57,7 +58,7 @@ export function useUsers() {
   }, []);
 
   return {
-    data,
+    data: users,
     isLoading,
     isError,
     isLoadingNextPage,

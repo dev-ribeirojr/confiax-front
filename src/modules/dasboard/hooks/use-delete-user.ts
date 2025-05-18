@@ -1,8 +1,11 @@
 import { deleteUser } from "@/services/models/user";
+import { useUsersStore } from "@/stores";
 import { useRef, useState } from "react";
 import toast from "react-hot-toast";
 
 export function useDeleteUser() {
+  const { removeUser } = useUsersStore();
+
   const [isOpen, setIsOpen] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
@@ -28,6 +31,8 @@ export function useDeleteUser() {
       setIsLoading(true);
 
       await deleteUser(userId.current);
+
+      removeUser(userId.current);
 
       toast.success("Usuário excluído com sucesso!");
 
