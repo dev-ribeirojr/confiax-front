@@ -2,7 +2,7 @@ import { Navigate, Outlet } from "react-router";
 
 export function PrivateRoutes() {
   const isLoading = false;
-  const isAuthenticated = true;
+  const isAuthenticated = false;
 
   if (isLoading) return <div />;
 
