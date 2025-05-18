@@ -21,12 +21,13 @@ export function Routes() {
       element: <MiddlewareRoutes isPrivate />,
       children: [
         {
-          path: "/",
-          element: (
-            <Layout>
-              <Home />
-            </Layout>
-          ),
+          element: <Layout />,
+          children: [
+            {
+              path: "/",
+              element: <Home />,
+            },
+          ],
         },
       ],
     },

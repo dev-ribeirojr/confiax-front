@@ -1,22 +1,27 @@
-import { type LucideIcon } from "lucide-react";
+import { LayoutDashboard, UserPlus } from "lucide-react";
+import { twMerge } from "tailwind-merge";
 
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { twMerge } from "tailwind-merge";
 
-export function NavMain({
-  items,
-}: {
-  items: {
-    title: string;
-    url: string;
-    icon: LucideIcon;
-    isActive?: boolean;
-  }[];
-}) {
+const items = [
+  {
+    title: "Dashboard",
+    url: "/",
+    icon: LayoutDashboard,
+    isActive: true,
+  },
+  {
+    title: "Novo usuário",
+    url: "#",
+    icon: UserPlus,
+  },
+];
+
+export function NavMain() {
   return (
     <SidebarMenu className="p-2">
       {items.map((item) => (
@@ -26,7 +31,8 @@ export function NavMain({
             isActive={item.isActive}
             className={twMerge(
               item.isActive && "bg-primary! text-white!",
-              "p-3"
+              !item.isActive && "border",
+              "p-3 h-9"
             )}
           >
             <a href={item.url}>

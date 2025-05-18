@@ -1,4 +1,10 @@
-import { Badge, Button, Card, CardDescription } from "@/components/ui";
+import {
+  Badge,
+  Button,
+  Card,
+  CardDescription,
+  CardUserDetails,
+} from "@/components/ui";
 
 import { FaEllipsisV } from "react-icons/fa";
 
@@ -19,17 +25,7 @@ export function CardUser() {
         </Button>
       </div>
 
-      <div className="flex gap-4 items-center">
-        <div className="h-12 w-12 rounded-full bg-primary" />
-        <div>
-          <CardDescription className="capitalize font-semibold">
-            pablo alves ribeiro
-          </CardDescription>
-          <CardDescription className="text-[13px]">
-            email@email.com
-          </CardDescription>
-        </div>
-      </div>
+      <CardUserDetails email={"email@email.com"} name={"pablo alves ribeiro"} />
 
       <div className="flex gap-2 justify-between">
         <div>

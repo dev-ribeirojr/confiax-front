@@ -1,15 +1,18 @@
-import type { ReactNode } from "react";
+import { Outlet } from "react-router";
 import { AppSidebar } from "@/components/layout/app-sidebar";
-import { SidebarInset, SidebarProvider } from "@/components/ui";
 import { Header } from "@/components/layout/header";
+import { Separator, SidebarInset, SidebarProvider } from "@/components/ui";
 
-export function Layout({ children }: { children: ReactNode }) {
+export function Layout() {
   return (
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
         <Header />
-        <div className="flex flex-1 flex-col gap-4 p-4 pt-0">{children}</div>
+        <Separator />
+        <div className="flex flex-1 flex-col gap-4 p-4 bg-primary/4">
+          <Outlet />
+        </div>
       </SidebarInset>
     </SidebarProvider>
   );
