@@ -15,10 +15,6 @@ import { useUserStore } from "@/stores";
 export function useSignIn() {
   const form = useForm<SignInDto>({
     resolver: zodResolver(signInSchema),
-    defaultValues: {
-      email: "pablo@email.com",
-      password: "123456",
-    },
   });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -36,9 +32,9 @@ export function useSignIn() {
 
       const responseMe = await getMe();
 
-      console.log("USER DATA", responseMe);
-
       updateUser(responseMe);
+
+      form.reset();
 
       navigate("/");
     } catch (error) {
