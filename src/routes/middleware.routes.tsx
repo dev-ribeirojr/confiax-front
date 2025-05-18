@@ -33,7 +33,11 @@ export function MiddlewareRoutes({
   }
 
   useEffect(() => {
-    authenticatedUser();
+    if (!user) {
+      authenticatedUser();
+    } else {
+      setIsLoading(false);
+    }
   }, []);
 
   if (isLoading) return <div />;
