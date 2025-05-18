@@ -1,20 +1,24 @@
 import { useRoutes } from "react-router";
 
-import { PrivateRoutes } from "@/routes/private.routes";
-
 import { SignIn } from "@/modules/auth/pages";
 import { Home } from "@/modules/dasboard/pages";
 import { NotFound } from "@/modules/shared/pages";
 import { Layout } from "@/components/layout";
+import { MiddlewareRoutes } from "@/routes/middleware.routes";
 
 export function Routes() {
   const routes = useRoutes([
     {
-      path: "/authentication",
-      element: <SignIn />,
+      element: <MiddlewareRoutes onlyPublic />,
+      children: [
+        {
+          path: "/authentication",
+          element: <SignIn />,
+        },
+      ],
     },
     {
-      element: <PrivateRoutes />,
+      element: <MiddlewareRoutes isPrivate />,
       children: [
         {
           path: "/",
@@ -24,8 +28,11 @@ export function Routes() {
             </Layout>
           ),
         },
-        { path: "*", element: <NotFound /> },
       ],
+    },
+    {
+      element: <MiddlewareRoutes />,
+      children: [{ path: "*", element: <NotFound /> }],
     },
   ]);
 
