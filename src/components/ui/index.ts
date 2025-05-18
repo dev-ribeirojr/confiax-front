@@ -1,6 +1,7 @@
 export * from "./avatar";
 export * from "./badge";
 export * from "./card-user-detail";
+export * from "./dialog";
 export * from "./dropdown-menu";
 export * from "./button";
 export * from "./card";
