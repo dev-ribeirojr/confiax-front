@@ -46,7 +46,9 @@ export function FormUser({
       <CardContent className="px-4">
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
-            <CardDescription className="mb-2">Permissões</CardDescription>
+            <CardDescription className="mb-2">
+              Permissões (opcional)
+            </CardDescription>
             <If
               condition={!isLoadingRoles}
               elseRender={
