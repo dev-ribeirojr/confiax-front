@@ -4,6 +4,7 @@ import { Navigate, Outlet } from "react-router";
 import { useUserStore } from "@/stores";
 import { getMe } from "@/services/models/user";
 import { deleteCookies } from "@/lib";
+import { Loading } from "@/components/ui";
 
 interface MiddlewareRoutesProps {
   onlyPublic?: boolean;
@@ -40,7 +41,12 @@ export function MiddlewareRoutes({
     }
   }, []);
 
-  if (isLoading) return <div />;
+  if (isLoading)
+    return (
+      <div className="h-full flex items-center">
+        <Loading />
+      </div>
+    );
 
   const isAuthenticated = !!user;
 
