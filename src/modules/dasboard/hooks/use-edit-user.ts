@@ -33,8 +33,6 @@ export function useEditUser() {
 
   async function onSubmit({ name, password, roles }: EditUserSchemaProps) {
     try {
-      setIsLoading(true);
-
       await updateUser({ id: id!, name, password, roles });
 
       toast.success("Usuário editado com sucesso");
@@ -55,6 +53,7 @@ export function useEditUser() {
       return;
     }
     try {
+      setIsLoading(true);
       const response = await getUserById(id);
 
       setCurrentRolesIds(response.roles.map((role) => role.id));
@@ -71,7 +70,9 @@ export function useEditUser() {
   }
 
   useEffect(() => {
-    getUserDetails();
+    if (!isLoading) {
+      getUserDetails();
+    }
   }, []);
 
   return {

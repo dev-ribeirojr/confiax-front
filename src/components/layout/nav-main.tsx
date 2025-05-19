@@ -1,4 +1,4 @@
-import { LayoutDashboard, UserPlus } from "lucide-react";
+import { LayoutDashboard, UserPlus, UserRoundPen } from "lucide-react";
 import { twMerge } from "tailwind-merge";
 
 import {
@@ -24,6 +24,16 @@ export function NavMain() {
       icon: UserPlus,
       isActive: pathname === "/new-user",
     },
+    ...(pathname.includes("edit-user")
+      ? [
+          {
+            title: "Edição de usuário",
+            url: pathname,
+            icon: UserRoundPen,
+            isActive: true,
+          },
+        ]
+      : []),
   ];
 
   return (

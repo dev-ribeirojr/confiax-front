@@ -11,4 +11,4 @@ export const newUserSchema = z.object({
   roles: z.array(z.string()).optional(),
 });
 
-export type NewUSerSchemaProps = z.infer<typeof newUserSchema>;
+export type NewUserSchemaProps = z.infer<typeof newUserSchema>;

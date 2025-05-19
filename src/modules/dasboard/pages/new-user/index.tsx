@@ -10,7 +10,9 @@ export function NewUser() {
       description=" Para cadastrar um novo usuário é necessário preencher os campos
           abaixo!"
       isLoading={isLoading}
+      // @ts-ignore
       form={form}
+      // @ts-ignore
       onSubmit={onSubmit}
     />
   );

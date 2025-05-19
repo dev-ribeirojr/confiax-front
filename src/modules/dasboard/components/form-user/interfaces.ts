@@ -1,6 +1,6 @@
 import type {
   EditUserSchemaProps,
-  NewUSerSchemaProps,
+  NewUserSchemaProps,
 } from "@/modules/dasboard/schemas";
 import type { UseFormReturn } from "react-hook-form";
 
@@ -8,12 +8,12 @@ export interface FormUserProps {
   title: string;
   description: string;
   form: UseFormReturn<
-    EditUserSchemaProps | NewUSerSchemaProps,
+    NewUserSchemaProps | EditUserSchemaProps,
     any,
-    EditUserSchemaProps | NewUSerSchemaProps
+    NewUserSchemaProps | EditUserSchemaProps
   >;
   isLoading: boolean;
   action?: "edit" | "new";
   currentRolesIds?: string[];
-  onSubmit: (data: EditUserSchemaProps | NewUSerSchemaProps) => Promise<void>;
+  onSubmit: (data: NewUserSchemaProps | EditUserSchemaProps) => Promise<void>;
 }

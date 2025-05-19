@@ -6,7 +6,7 @@ import type { AxiosError } from "axios";
 
 import {
   newUserSchema,
-  type NewUSerSchemaProps,
+  type NewUserSchemaProps,
 } from "@/modules/dasboard/schemas";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createUser } from "@/services/models/user";
@@ -14,7 +14,7 @@ import { createUser } from "@/services/models/user";
 export function useNewUser() {
   const [isLoading, setIsLoading] = useState(false);
 
-  const form = useForm<NewUSerSchemaProps>({
+  const form = useForm<NewUserSchemaProps>({
     resolver: zodResolver(newUserSchema),
     defaultValues: {
       name: "",
@@ -24,7 +24,7 @@ export function useNewUser() {
     },
   });
 
-  async function onSubmit(params: NewUSerSchemaProps) {
+  async function onSubmit(params: NewUserSchemaProps) {
     try {
       setIsLoading(true);
       await createUser(params);
