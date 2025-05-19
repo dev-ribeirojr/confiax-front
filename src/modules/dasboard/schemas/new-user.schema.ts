@@ -1,7 +1,9 @@
 import { z } from "zod";
 
 export const newUserSchema = z.object({
-  name: z.string({ required_error: "Campo obrigatório" }),
+  name: z
+    .string({ required_error: "Campo obrigatório" })
+    .min(3, "Digite um nome válido"),
   email: z
     .string({ required_error: "Campo obrigatório" })
     .email("Digite um email válido"),
