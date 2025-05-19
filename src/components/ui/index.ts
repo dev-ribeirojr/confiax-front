@@ -17,3 +17,4 @@ export * from "./skeleton";
 export * from "./tooltip";
 export * from "./if";
 export * from "./error";
+export * from "./switch";

@@ -20,6 +20,7 @@ export function useNewUser() {
       name: "",
       email: "",
       password: "",
+      roles: [],
     },
   });
 
