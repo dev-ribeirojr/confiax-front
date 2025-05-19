@@ -1,13 +1,27 @@
-# Teste front-end 
+# 💻 Confiax Frontend
+Este é o repositório do front-end do projeto Confiax, desenvolvido com Vite, React e diversas ferramentas modernas de UI e gerenciamento de estado.
 
-Passos para poder rodar o projeto localmente
+## 🚀 Tecnologias utilizadas
+- Vite
+- Shadcn UI
+- Tailwind CSS
+- TypeScript
+- Axios
+- Zustand
+- React Hook Form + Zod
 
-Não precise se atentar ao .env pois as variáveis de ambientes não foi removido!
 
-1 - Clone o repositório, é necessário que clone o backend tambem [Acesse aqui](https://github.com/dev-ribeirojr/confiax-back):
+## ⚙️ Instalação
+
+1. Clone os repositórios
+2. 
+Você precisará clonar tanto o front-end quanto o back-end:
 ```
 git clone https://github.com/dev-ribeirojr/confiax-front.git
 ```
+
+Backend:
+👉 Acesse aqui o repositório do [back end](https://github.com/dev-ribeirojr/confiax-back)
 
 2 - Em seguina navegue até o projeto e installe as dependências:
 ```
@@ -22,12 +36,3 @@ npm run dev
 4 - Acesse em:
 [http://localhost:5173/](http://localhost:5173/)
 
-## Ferramentas utilizadas para desenvolver essa aplicação front end
-
-- Vite
-- Shadcn UI
-- Tailwind CSS
-- Typescript
-- Axios
-- Zustand
-- React Hook form + zod 
