@@ -14,12 +14,17 @@ import type { ReactNode } from "react";
 interface CardUserMenuProps {
   children: ReactNode;
   deleteUser: () => void;
+  editUser: () => void;
 }
 
-export function CardUserMenu({ children, deleteUser }: CardUserMenuProps) {
+export function CardUserMenu({
+  children,
+  deleteUser,
+  editUser,
+}: CardUserMenuProps) {
   const options = [
     {
-      onClik: () => {},
+      onClik: editUser,
       description: "Editar usuário",
       icon: <Edit />,
     },

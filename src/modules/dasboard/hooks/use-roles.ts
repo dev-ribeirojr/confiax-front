@@ -11,11 +11,8 @@ export function useRoles() {
       setIsLoading(true);
       const response = await getRoles();
 
-      console.log("Roles ", response);
-
       setRoles(response);
     } catch (error) {
-      console.log("ERROR", error);
     } finally {
       setIsLoading(false);
     }

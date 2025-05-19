@@ -9,6 +9,7 @@ import {
 import { format } from "date-fns";
 import { CardUserMenu } from "@/modules/dasboard/pages/home/components/card-user-menu";
 import { EllipsisVertical } from "lucide-react";
+import { useNavigate } from "react-router";
 
 interface CardUserProps {
   item: UserModel;
@@ -16,6 +17,8 @@ interface CardUserProps {
 }
 
 export function CardUser({ item, deleteUser }: CardUserProps) {
+  const router = useNavigate();
+
   return (
     <Card className="p-4 relative">
       <div className="flex justify-between items-center w-full gap-4">
@@ -26,7 +29,10 @@ export function CardUser({ item, deleteUser }: CardUserProps) {
             </Badge>
           ))}
         </div>
-        <CardUserMenu deleteUser={deleteUser}>
+        <CardUserMenu
+          deleteUser={deleteUser}
+          editUser={() => router(`/edit-user/${item.id}`)}
+        >
           <Button
             className="h-8 w-8 absolute right-3 top-3 p-0"
             variant={"ghost"}

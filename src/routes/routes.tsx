@@ -1,7 +1,7 @@
 import { useRoutes } from "react-router";
 
 import { SignIn } from "@/modules/auth/pages";
-import { Home, NewUser } from "@/modules/dasboard/pages";
+import { EditUser, Home, NewUser } from "@/modules/dasboard/pages";
 import { NotFound } from "@/modules/shared/pages";
 import { Layout } from "@/components/layout";
 import { MiddlewareRoutes } from "@/routes/middleware.routes";
@@ -30,6 +30,10 @@ export function Routes() {
             {
               path: "/new-user",
               element: <NewUser />,
+            },
+            {
+              path: "/edit-user/:id",
+              element: <EditUser />,
             },
           ],
         },
